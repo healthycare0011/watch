@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Site</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 20px;
+        }
+
+        .video-card {
+            width: 300px;
+            margin: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .video-card h3 {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .button-container button.watch {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .button-container button.download {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Video Site</h1>
+    </header>
+
+    <div id="video-container">
+        <!-- Sample video card, repeat as needed -->
+        <div class="video-card">
+            <img src="video_thumbnail.jpg" alt="Video Thumbnail">
+            <h3>Video Title 1</h3>
+            <div class="button-container">
+                <button class="watch" onclick="redirectToWatchPage('video1.mp4')">Watch</button>
+                <button class="download" onclick="redirectToDownloadPage('video1.mp4')">Download</button>
+            </div>
+        </div>
+
+        <!-- Add more video cards as needed -->
+
+    </div>
+
+    <script>
+        function redirectToWatchPage(videoUrl) {
+            window.location.href = 'watch.html?video=' + encodeURIComponent(videoUrl);
+        }
+
+        function redirectToDownloadPage(videoUrl) {
+            window.location.href = 'download.html?video=' + encodeURIComponent(videoUrl);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Video</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        video {
+            width: 80%;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Watch Video</h1>
+    </header>
+
+    <div>
+        <video controls>
+            <source src="" type="video/mp4" id="videoPlayer">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoUrl = urlParams.get('video');
+        document.getElementById('videoPlayer').src = decodeURIComponent(videoUrl);
+    </script>
+
+</body>
+</html>

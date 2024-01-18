@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Upload</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .upload-container {
+            margin: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        #progressBar {
+            width: 0;
+            height: 10px;
+            background-color: #3498db;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Admin Upload</h1>
+    </header>
+
+    <div class="upload-container">
+        <form id="uploadForm">
+            <label for="videoName">Video Name:</label>
+            <input type="text" id="videoName" name="videoName" required>
+
+            <label for="thumbnail">Video Thumbnail:</label>
+            <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required>
+
+            <label for="videoFile">Video File:</label>
+            <input type="file" id="videoFile" name="videoFile" accept="video/*" required>
+
+            <button type="button" onclick="uploadVideo()">Upload</button>
+
+            <div id="progressBar"></div>
+        </form>
+    </div>
+
+    <script>
+        function uploadVideo() {
+            const form = document.getElementById('uploadForm');
+            const progressBar = document.getElementById('progressBar');
+
+            const formData = new FormData(form);
+
+            fetch('your_upload_endpoint', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    // Add any necessary headers here
+                },
+                // You may need to handle authentication based on your server
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Process the response, e.g., show a success message
+                console.log(data);
+
+                // Redirect to the index page after successful upload
+                window.location.href = 'index.html';
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>
